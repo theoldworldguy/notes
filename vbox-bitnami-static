@@ -1,0 +1,26 @@
+Im using bitnami
+
+sudo systemctl enable systemd-networkd
+
+sudo nano /etc/ssh/sshd_config (allow passwords)
+
+sudo rm -f /etc/ssh/sshd_not_to_be_run
+
+sudo nano /etc/systemd/network/10-enp0s3.network
+
+[Match]
+Name=Interface Name
+
+[Network]
+Address=192.168.1.XX/24
+Gateway=192.168.1.1
+DNS=192.168.1.1
+
+save exit and restart the network
+
+disable other network controller? i just move the files that works
+
+ sudo mv /etc/network/interfaces /etc/network/interfaces.save
+sudo   mv /etc/network/interfaces.d /etc/network/interfaces.d.save
+
+  systemctl restart systemd-networkd
